@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location-based AR.js demo</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js'></script>
+    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js'></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+    <a-scene xr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false;" renderer="logarithmicDepthBuffer: true;">
+        <a-camera gps-new-camera minDistance="10"></a-camera>
+        <a-assets>
+            <a-asset-item id="aqua1"
+                src="static/assets/aqua1.glb"></a-asset-item>
+            <a-asset-item id="tree"
+                src="static/assets/ChristmasTree.glb"></a-asset-item>
+        </a-assets>
+        <a-entity gltf-model="#tree" modify-materials scale="7 7 7" position="0 -5 0"
+         gps-new-entity-place="latitude: 35.04896; longitude: 135.78019"></a-entity>
+        <a-entity gltf-model="#aqua1" modify-materials look-at="[gps-new-camera]" scale="0.2 0.2 0.2" position="0 -10 0"
+         gps-new-entity-place="latitude: 35.04882; longitude: 135.78025"></a-entity>
+    </a-scene>
+</body>
+
+</html>
